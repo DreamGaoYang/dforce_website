@@ -30,6 +30,14 @@
     margin-top: 15px;
 }
 
+.mt24 {
+    margin-top: 24px;
+}
+
+.mt14 {
+    margin-top: 14px;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -252,6 +260,7 @@ div.built div.builtLeft img {
 
 div.built div.builtRight {
     float: left;
+    width: 600px;
 }
 
 div.built div.builtRight p.title {
@@ -265,6 +274,7 @@ div.built div.builtRight p.txt {
     font-size: 18px;
     font-weight: 400;
     color: rgba(136, 135, 140, 1);
+    line-height: 24px;
 }
 
 /*** built end ***/

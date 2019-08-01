@@ -29,6 +29,12 @@ a:active {
     margin-top: 15px !important;
 }
 
+.pad_mobile {
+    padding: 20px!important;
+    /* background: red!important; */
+    line-height: 30px;
+}
+
 body {
     font-family: myFont;
     -webkit-user-select: none;
@@ -265,34 +271,37 @@ div.built {
 }
 
 div.built div.builtLeft {
-    float: left;
+    /* float: left; */
     /* background: pink; */
-    width: 36%;
+    /* width: 36%; */
     /* padding-left: 114px; */
     padding-top: 14px;
+    text-align: center;
 }
 
 div.built div.builtLeft img {
-    width: 86%;
-    margin-left: 7%;
+    width: 180px;
+    /* margin-left: 7%; */
+    /* margin: 0 auto; */
 }
 
 div.built div.builtRight {
-    float: left;
-    width: 64%;
+    /* float: left; */
+    /* width: 64%; */
 }
 
-div.built div.builtRight p.title {
+/* div.built div.builtRight p.title {
     font-size: 16px;
     font-weight: bold;
     color: rgba(43, 41, 58, 1);
     line-height: 40px;
-}
+} */
 
 div.built div.builtRight p.txt {
     font-size: 14px;
     font-weight: 400;
     color: rgba(136, 135, 140, 1);
+    padding: 0 15px;
 }
 
 /*** built end ***/
