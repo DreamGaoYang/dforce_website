@@ -21,10 +21,10 @@ a:active {
 }
 
 header {
-    width: 1240px;
+    width: 1040px;
     /* background: red; */
     margin: 0 auto;
-    padding-top: 30px;
+    padding-top: 20px;
 }
 
 header div.left {
@@ -32,12 +32,12 @@ header div.left {
 }
 
 header div.left img {
-    width: 126px;
+    width: 100px;
 }
 
 header div.right {
     float: right;
-    padding-right: 70px;
+    /* padding-right: 70px; */
 }
 
 header div.right div.meun {
@@ -69,7 +69,7 @@ header div.right div.meun a {
     width: 100%;
     height: 100%;
     /* background: red; */
-    line-height: 40px;
+    line-height: 26px;
     transition: 0.3s;
 }
 
@@ -84,8 +84,8 @@ header div.right div.meun:hover a {
 /* --------------------------------- */
 
 div.top {
-    width: 1240px;
-    height: 610px;
+    width: 1040px;
+    height: 400px;
     /* background: pink; */
     margin: 0 auto;
     position: relative;
@@ -94,22 +94,23 @@ div.top {
 }
 
 div.top h1 {
-    font-size: 64px;
+    font-size: 40px;
     font-family: OpenSans-ExtraBold;
     font-weight: 800;
     color: rgba(7, 2, 55, 1);
-    line-height: 100px;
+    line-height: 60px;
 }
 
 div.top h2 {
-    font-size: 44px;
+    font-size: 30px;
     font-family: DINAlternate-Bold;
     font-weight: bold;
     color: rgba(213, 162, 78, 1);
-    line-height: 70px;
+    line-height: 50px;
 }
 
 div.top img {
+    width: 800px;
     position: absolute;
     right: 0;
     bottom: 0;
@@ -125,12 +126,12 @@ div.arrowdown {
     margin-top: 50px;
     margin-bottom: 50px;
     position: relative;
-    margin-top: 150px;
-    margin-bottom: 80px;
+    margin-top: 120px;
+    margin-bottom: 100px;
 }
 
 div.arrowdown img {
-    width: 46px;
+    width: 40px;
     position: absolute;
     left: 50%;
     top: 50%;
@@ -141,13 +142,13 @@ div.arrowdown img {
 
 div.bg1 {
     background: pink;
-    background: url('../images/bg1.png') no-repeat center 390px;
+    background: url('../images/bg1.png') no-repeat center 0px;
 }
 
 /* --------------------------------- */
 
 div.dforce {
-    width: 1240px;
+    width: 1040px;
     /* background: red; */
     margin: 0 auto;
 }
@@ -165,10 +166,10 @@ div.dforce h3.iamh3 {
 div.dforce div.dforceitem {}
 
 div.dforce div.dforceitem div.item {
-    width: 356px;
-    height: 418px;
+    width: 280px;
+    height: 316px;
     /* background: red; */
-    margin-right: 51px;
+    margin-right: 100px;
     float: left;
     background: rgba(255, 255, 255, 1);
     border: 1px solid rgba(191, 191, 191, 1);
@@ -177,29 +178,29 @@ div.dforce div.dforceitem div.item {
 }
 
 div.dforce div.dforceitem div.item img {
-    height: 90px;
-    margin-top: 45px;
-    margin-bottom: 60px;
+    height: 60px;
+    margin-top: 35px;
+    margin-bottom: 25px;
 }
 
 div.dforce div.dforceitem div.item div.text {
-    width: 290px;
+    width: 242px;
     margin: 0 auto;
     /* background: red; */
-    font-size: 18px;
+    font-size: 16px;
     font-family: NotoSansHans-Regular;
     font-weight: 400;
     color: rgba(75, 70, 119, 1);
-    line-height: 30px;
+    line-height: 26px;
 }
 
 /* --------------------------------- */
 div.usdx {
-    width: 1240px;
+    width: 1040px;
     /* background: green; */
     margin: 0 auto;
-    padding-top: 320px;
-    padding-bottom: 240px;
+    padding-top: 120px;
+    padding-bottom: 210px;
 }
 
 div.usdx div.left {
@@ -207,13 +208,13 @@ div.usdx div.left {
 }
 
 div.usdx div.left img {
-    width: 560px;
+    width: 500px;
     margin-right: 40px;
 }
 
 div.usdx div.right {
     float: left;
-    width: 640px;
+    width: 500px;
 }
 
 div.usdx div.right h3 {
@@ -228,11 +229,11 @@ div.usdx div.right h3 {
 
 div.usdx div.right div.text1,
 div.usdx div.right div.text2 {
-    font-size: 18px;
+    font-size: 16px;
     font-family: NotoSansHans-Regular;
     font-weight: 400;
     color: rgba(75, 70, 119, 1);
-    line-height: 30px;
+    line-height: 24px;
 }
 
 div.usdx div.right div.text2 {
@@ -242,10 +243,10 @@ div.usdx div.right div.text2 {
 /* --------------------------------- */
 
 div.highlight {
-    width: 1240px;
+    width: 1040px;
     /* background: red; */
     margin: 0 auto;
-    padding-top: 100px;
+    /* padding-top: 100px; */
     /* margin-top: 150px; */
     margin-bottom: 180px;
 }
@@ -266,15 +267,15 @@ div.highlight div.hightlightitem {
 }
 
 div.highlight div.hightlightitem div.item {
-    width: 230px;
+    width: 180px;
     float: left;
-    margin-right: 22px;
+    margin-right: 35px;
     /* background: pink; */
 }
 
 div.highlight div.hightlightitem div.item div.img {
-    width: 160px;
-    height: 160px;
+    width: 110px;
+    height: 110px;
     background: rgba(255, 255, 255, 1);
     border: 1px solid rgba(232, 232, 233, 1);
     border-radius: 50%;
@@ -290,34 +291,38 @@ div.highlight div.hightlightitem div.item div.img img {
 }
 
 div.highlight div.hightlightitem div.item div.title {
-    font-size: 18px;
+    font-size: 16px;
     font-family: NotoSansHans-Black;
     font-weight: 900;
     color: rgba(75, 70, 119, 1);
-    line-height: 27px;
+    line-height: 24px;
     /* background: red; */
     text-align: center;
-    margin-top: 20px;
+    margin-top: 16px;
 }
 
 /* --------------------------------- */
 
 div.lendf {
-    width: 1240px;
+    width: 1040px;
     /* background: red; */
     margin: 0 auto;
 }
 
 div.lendf div.left {
     float: left;
-    width: 420px;
+    width: 380px;
     /* background: pink; */
     padding-left: 35px;
 }
 
+div.lendf div.left img {
+    width: 270px;
+}
+
 div.lendf div.right {
     float: left;
-    width: 820px;
+    width: 660px;
 }
 
 div.lendf div.right h3 {
@@ -326,22 +331,26 @@ div.lendf div.right h3 {
     font-weight: 900;
     color: rgba(7, 2, 55, 1);
     line-height: 70px;
-    padding-top: 50px;
+    padding-top: 32px;
+}
+
+div.lendf div.right h3 a:hover {
+    text-decoration: underline;
 }
 
 div.lendf div.right div.text {
-    height: 40px;
-    font-size: 18px;
+    height: 36px;
+    font-size: 16px;
     font-family: NotoSansHans-Regular;
     font-weight: 400;
     color: rgba(83, 78, 124, 1);
-    line-height: 28px;
+    line-height: 22px;
 }
 
 /* --------------------------------- */
 
 div.partner {
-    width: 1240px;
+    width: 1040px;
     /* background: red; */
     margin: 0 auto;
 }
@@ -362,16 +371,17 @@ div.partner div.partneritem {}
 div.partner div.partneritem div.item {
     position: relative;
     float: left;
-    width: 280px;
-    height: 150px;
+    width: 230px;
+    height: 130px;
     margin-right: 40px;
     background: rgba(255, 255, 255, 1);
     border: 1px solid rgba(237, 237, 242, 1);
     border-radius: 4px;
-    margin-top: 40px;
+    margin-top: 24px;
 }
 
 div.partner div.partneritem div.item img {
+    width: 80%;
     position: absolute;
     left: 50%;
     top: 50%;
@@ -381,7 +391,7 @@ div.partner div.partneritem div.item img {
 /* --------------------------------- */
 
 div.developers {
-    width: 1240px;
+    width: 1040px;
     /* background: pink; */
     margin: 0 auto;
     padding-bottom: 80px;
@@ -400,21 +410,21 @@ div.developers h3 {
 div.developers div.developersItem {
     float: left;
     width: 200px;
-    height: 228px;
+    height: 208px;
     background: rgba(255, 255, 255, 1);
     border: 1px solid rgba(237, 237, 242, 1);
-    margin-right: 60px;
+    margin-right: 80px;
     text-align: center;
 }
 
 div.developers div.developersItem img {
-    height: 57px;
-    margin-top: 40px;
-    margin-bottom: 35px;
+    height: 50px;
+    margin-top: 35px;
+    margin-bottom: 30px;
 }
 
 div.developers div.developersItem div.devName {
-    font-size: 24px;
+    font-size: 20px;
     font-family: SourceHanSansCN-Medium;
     font-weight: 500;
     color: rgba(43, 41, 58, 1);
@@ -430,8 +440,8 @@ div.developers div.developersItem div.more a {
     width: 100px;
     margin: 0 auto;
     background: url('../images/arrow_right.png') no-repeat right 4px;
-    background-size: 9px;
-    font-size: 18px;
+    background-size: 8px;
+    font-size: 16px;
     font-family: SourceHanSansCN-Regular;
     font-weight: 400;
     color: rgba(172, 170, 185, 1);
@@ -442,16 +452,16 @@ div.developers div.developersItem div.more a {
 
 div.bottom {
     width: 100%;
-    min-width: 1240px;
-    height: 180px;
+    min-width: 1040px;
+    height: 140px;
     background: rgba(7, 2, 55, 1);
 }
 
 div.bottom div.content {
-    width: 1240px;
+    width: 1040px;
     /* background: red; */
     margin: 0 auto;
-    padding-top: 60px;
+    padding-top: 35px;
 }
 
 div.bottom div.content div.left {
