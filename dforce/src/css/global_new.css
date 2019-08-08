@@ -20,6 +20,10 @@ a:active {
     margin-right: 0 !important;
 }
 
+div.header {
+    display: none;
+}
+
 header {
     width: 1040px;
     /* background: red; */
@@ -109,6 +113,10 @@ div.top h2 {
     line-height: 50px;
 }
 
+div.top h2.h2mobile {
+    display: none;
+}
+
 div.top img {
     width: 800px;
     position: absolute;
@@ -156,6 +164,7 @@ div.dforce {
 div.dforce h3.iamh3 {
     font-size: 28px;
     font-family: NotoSansHans-Bold;
+    font-family: NotoSansHans-Regular;
     font-weight: bold;
     color: rgba(7, 2, 55, 1);
     line-height: 38px;
@@ -220,6 +229,7 @@ div.usdx div.right {
 div.usdx div.right h3 {
     font-size: 28px;
     font-family: NotoSansHans-Bold;
+    font-family: NotoSansHans-Regular;
     font-weight: bold;
     color: rgba(7, 2, 55, 1);
     line-height: 38px;
@@ -254,6 +264,7 @@ div.highlight {
 div.highlight h3 {
     font-size: 28px;
     font-family: NotoSansHans-Black;
+    font-family: NotoSansHans-Regular;
     font-weight: 900;
     color: rgba(7, 2, 55, 1);
     line-height: 70px;
@@ -293,6 +304,7 @@ div.highlight div.hightlightitem div.item div.img img {
 div.highlight div.hightlightitem div.item div.title {
     font-size: 16px;
     font-family: NotoSansHans-Black;
+    font-family: NotoSansHans-Regular;
     font-weight: 900;
     color: rgba(75, 70, 119, 1);
     line-height: 24px;
@@ -328,6 +340,7 @@ div.lendf div.right {
 div.lendf div.right h3 {
     font-size: 28px;
     font-family: NotoSansHans-Black;
+    font-family: NotoSansHans-Regular;
     font-weight: 900;
     color: rgba(7, 2, 55, 1);
     line-height: 70px;
@@ -359,6 +372,7 @@ div.partner h3 {
     height: 22px;
     font-size: 28px;
     font-family: NotoSansHans-Black;
+    font-family: NotoSansHans-Regular;
     font-weight: 900;
     color: rgba(7, 2, 55, 1);
     line-height: 70px;
@@ -400,6 +414,7 @@ div.developers {
 div.developers h3 {
     font-size: 28px;
     font-family: NotoSansHans-Black;
+    font-family: NotoSansHans-Regular;
     font-weight: 900;
     color: rgba(7, 2, 55, 1);
     line-height: 70px;
@@ -449,6 +464,9 @@ div.developers div.developersItem div.more a {
 }
 
 /* --------------------------------- */
+div.bottom_mobile {
+    display: none;
+}
 
 div.bottom {
     width: 100%;
