@@ -100,6 +100,7 @@ div.top {
 div.top h1 {
     font-size: 40px;
     font-family: OpenSans-ExtraBold;
+    font-family: NotoSansHans-Regular;
     font-weight: 800;
     color: rgba(7, 2, 55, 1);
     line-height: 60px;
@@ -108,6 +109,7 @@ div.top h1 {
 div.top h2 {
     font-size: 30px;
     font-family: DINAlternate-Bold;
+    font-family: NotoSansHans-Regular;
     font-weight: bold;
     color: rgba(213, 162, 78, 1);
     line-height: 50px;
@@ -440,7 +442,7 @@ div.developers div.developersItem img {
 
 div.developers div.developersItem div.devName {
     font-size: 20px;
-    font-family: SourceHanSansCN-Medium;
+    font-family: NotoSansHans-Regular;
     font-weight: 500;
     color: rgba(43, 41, 58, 1);
 }
@@ -457,7 +459,7 @@ div.developers div.developersItem div.more a {
     background: url('../images/arrow_right.png') no-repeat right 4px;
     background-size: 8px;
     font-size: 16px;
-    font-family: SourceHanSansCN-Regular;
+    font-family: NotoSansHans-Regular;
     font-weight: 400;
     color: rgba(172, 170, 185, 1);
     /* background: green; */

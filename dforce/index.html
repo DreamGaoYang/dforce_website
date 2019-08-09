@@ -24,6 +24,9 @@
 <body>
     <div class="header">
         <img src="./src/images/logo_mobile.png" alt="" srcset="">
+        <a href="https://usdx.dforce.network" target="_blank">USDx</a>
+        <a href="#community" class="myid">Community</a>
+        <div class="clear"></div>
     </div>
     <header>
         <div class="left">
@@ -37,7 +40,7 @@
                 <a href="" target="_blank">Lendf</a>
             </div> -->
             <div class="meun meun1">
-                <a href="#community" id="myid">Community</a>
+                <a href="#community" class="myid">Community</a>
             </div>
         </div>
         <div class="clear"></div>
@@ -281,6 +284,7 @@
     </div>
 
     <div class="bottom_mobile">
+        <span id='community'></span>
         <h3>Contact us</h3>
         <div class="image">
             <a target="_blank" href="https://medium.com/dforcenet" class="connectMe">
@@ -346,9 +350,8 @@
 
     // console.log('test', $);
     $(function () {
-        $("#myid").click(function () {
-            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location
-                .hostname == this.hostname) {
+        $(".myid").click(function () {
+            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
                 var $target = $(this.hash);
                 $target = $target.length && $target || $('[name=' + this.hash.slice(1) + ']');
                 if ($target.length) {
@@ -362,16 +365,16 @@
         });
 
         // exchange meun
-        $(".img_mobile").click(function () {
-            // console.log($(".img_mobile").attr('src'));
-            if ($(".img_mobile").attr('src') == './src/image/meun.png') {
-                $(".img_mobile").attr('src', './src/image/close.png');
-                $(".ul_mobile").css('display', 'block');
-            } else {
-                $(".img_mobile").attr('src', './src/image/meun.png');
-                $(".ul_mobile").css('display', 'none');
-            }
-        })
+        // $(".img_mobile").click(function () {
+        //     // console.log($(".img_mobile").attr('src'));
+        //     if ($(".img_mobile").attr('src') == './src/image/meun.png') {
+        //         $(".img_mobile").attr('src', './src/image/close.png');
+        //         $(".ul_mobile").css('display', 'block');
+        //     } else {
+        //         $(".img_mobile").attr('src', './src/image/meun.png');
+        //         $(".ul_mobile").css('display', 'none');
+        //     }
+        // })
     });
 
     // console.log('%c❤ WangKeAi', 'color: red', new Date().toLocaleDateString() + ' ' + new Date().toLocaleTimeString());
