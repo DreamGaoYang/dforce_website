@@ -75,6 +75,7 @@ header div.right div.meun a {
     /* background: red; */
     line-height: 26px;
     transition: 0.3s;
+    font-family: NotoSansHans-Regular;
 }
 
 header div.right div.meun:hover::after {
