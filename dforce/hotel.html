@@ -127,7 +127,7 @@
         <div class="confirm">
             <img src="./src/images/not_approved.png" class="imCheckBox" style="cursor: pointer; margin-bottom: -3px;">
             I confirm that I have read, understand and agree to the above rules and procedure for the auction of 1
-            DevConf ticket (7-11 October), Osaka, Japan.
+            Devcon ticket (Oct 8- Oct 11), Osaka, Japan.
         </div>
     </div>
 
@@ -333,7 +333,7 @@
                     $('.confirm').css('display', 'block');
                     $('.hidden_before_approve').css('display', 'none');
                     if (!isSubmitting) {
-                        $('.bidBtn').html('BID');
+                        $('.bidBtn').html('BID').removeClass('bidBtnActive');
                     }
                     // $(".imCheckBox").attr('src', './src/images/checked1.png');
                 }
@@ -423,7 +423,7 @@
                 return;
             }
             isSubmitting = true;
-            $('.bidBtn').html('Submitting');
+            $('.bidBtn').html('SUBMITTING…');
             contractHotel.deposit.sendTransaction(
                 depositNumber,
                 {
