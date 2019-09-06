@@ -331,6 +331,10 @@
                 } else {
                     isApprove = false;
                     $('.confirm').css('display', 'block');
+                    $('.hidden_before_approve').css('display', 'none');
+                    if (!isSubmitting) {
+                        $('.bidBtn').html('BID');
+                    }
                     // $(".imCheckBox").attr('src', './src/images/not_approved.png');
                 }
             });
