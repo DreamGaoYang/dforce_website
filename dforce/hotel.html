@@ -125,7 +125,7 @@
             </li>
         </ul>
         <div class="confirm">
-            <img src="./src/images/checked1.png" class="imCheckBox" style="cursor: pointer; margin-bottom: -3px;">
+            <img src="./src/images/not_approved.png" class="imCheckBox" style="cursor: pointer; margin-bottom: -3px;">
             I confirm that I have read, understand and agree to the above rules and procedure for the auction of 1
             DevConf ticket (7-11 October), Osaka, Japan.
         </div>
@@ -278,10 +278,8 @@
                 $('.connectBtn').css('display', 'none');
                 $('.rightAddress').html(myAccountShort);
                 $('.spanAddress').html(myAccount);
-
                 getMyBalance();
                 checkApprove();
-
                 setInterval(function () {
                     getMyBalance();
                     checkApprove();
@@ -332,7 +330,7 @@
                 } else {
                     isApprove = false;
                     $('.confirm').css('display', 'block');
-                    $(".imCheckBox").attr('src', './src/images/checked1.png');
+                    // $(".imCheckBox").attr('src', './src/images/checked1.png');
                 }
             });
         }
@@ -369,42 +367,42 @@
 
         // click to approve
         $(".imCheckBox").click(function () {
-            if ($(".imCheckBox").attr('src') == './src/images/checked1.png') {
-                $(".imCheckBox").attr('src', './src/images/checked2.png');
-                contractUSDx.approve.sendTransaction(
-                    addressHotel,
-                    approveNumer,
-                    {
-                        from: myAccount,
-                    },
-                    (err, ret) => {
-                        if (ret) {
-                            var approveUSDxtimer = setInterval(() => {
-                                console.log('i am checking approve USDx...');
-                                Web3.eth.getTransactionReceipt(ret, (err, data) => {
-                                    if (data && data.status === '0x1') {
-                                        clearInterval(approveUSDxtimer);
-                                        isApprove = true;
-                                        $('.confirm').css('display', 'none');
-                                        $('.bidBtn').addClass('bidBtnActive');
-                                        console.log('approve success');
-                                    }
-                                    if (data && data.status === '0x0') {
-                                        clearInterval(approveDAItimer);
-                                        isApprove = false;
-                                        $('.confirm').css('display', 'block');
-                                        console.log('approve faild');
-                                    }
-                                })
-                            }, 2000);
-                        }
+            $(".imCheckBox").attr('src', './src/images/isapproved.png');
+            contractUSDx.approve.sendTransaction(
+                addressHotel,
+                approveNumer,
+                {
+                    from: myAccount,
+                },
+                (err, ret) => {
+                    if (err) {
+                        $(".imCheckBox").attr('src', './src/images/not_approved.png');
                     }
-                );
-            } else {
-                console.log('approved');
-            }
+                    if (ret) {
+                        $(".imCheckBox").attr('src', './src/images/approving.png').addClass('imTurning');
+                        var approveUSDxtimer = setInterval(() => {
+                            console.log('i am checking approve USDx...');
+                            Web3.eth.getTransactionReceipt(ret, (err, data) => {
+                                if (data && data.status === '0x1') {
+                                    clearInterval(approveUSDxtimer);
+                                    isApprove = true;
+                                    $('.confirm').css('display', 'none');
+                                    $('.bidBtn').addClass('bidBtnActive');
+                                    $(".imCheckBox").attr('src', './src/images/isapproved.png').removeClass('imTurning');
+                                    console.log('approve success');
+                                }
+                                if (data && data.status === '0x0') {
+                                    clearInterval(approveDAItimer);
+                                    isApprove = false;
+                                    $('.confirm').css('display', 'block');
+                                    console.log('approve faild');
+                                }
+                            })
+                        }, 2000);
+                    }
+                }
+            );
         })
-
 
         // click to deposit
         $(".bidBtn").click(function () {
@@ -441,7 +439,6 @@
                 }
             )
         })
-
 
         // click to withdraw
         $(".withdraw").click(function () {
@@ -487,8 +484,6 @@
         $(".hotel2").click(function () {
             return;
         });
-
-
     });
 </script>
 
