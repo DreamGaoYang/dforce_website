@@ -212,6 +212,7 @@
         var myBided;
         var imTopBidder;
         var isSubmitting;
+        var approving;
 
         var timerStatus = setInterval(function () {
             console.log('check account change');
@@ -378,6 +379,10 @@
 
         // click to approve
         $(".imCheckBox").click(function () {
+            if (approving) {
+                return;
+            }
+            approving = true;
             $(".imCheckBox").attr('src', './src/images/isapproved.png');
             contractUSDx.approve.sendTransaction(
                 addressTicket,
@@ -387,6 +392,7 @@
                 },
                 (err, ret) => {
                     if (err) {
+                        approving = false;
                         $(".imCheckBox").attr('src', './src/images/not_approved.png');
                     }
                     if (ret) {
