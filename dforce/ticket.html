@@ -365,6 +365,10 @@
                                 imTopBidder = true;
                                 $('.withdraw').removeClass('withdrawActive');
                                 $('.withdrawTips').html("Please note you couldn't withdraw your USDx collateral if you were the top bidder.");
+                            } else {
+                                imTopBidder = false;
+                                $('.withdraw').addClass('withdrawActive');
+                                $('.withdrawTips').html("All your USDx assets supplied will be returned to the same address <span class='spanAddress'> " + myAccount + " </span>");
                             }
                         })
                     } else {
