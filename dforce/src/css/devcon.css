@@ -320,6 +320,7 @@ div.ticketTips ul li a {
 
 div.ticketTips div.confirm {
     margin-top: 24px;
+    display: none;
 }
 
 div.ticketTips div.confirm .imCheckBox {

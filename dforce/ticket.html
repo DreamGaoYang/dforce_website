@@ -326,7 +326,9 @@
                 if (ret && ret.c[0] > 0) {
                     isApprove = true;
                     $('.confirm').css('display', 'none');
-                    $('.bidBtn').addClass('bidBtnActive');
+                    if (!isSubmitting) {
+                        $('.bidBtn').addClass('bidBtnActive');
+                    }
                     getMyBid();
                 } else {
                     isApprove = false;
@@ -423,6 +425,7 @@
                 return;
             }
             isSubmitting = true;
+            $('.bidBtn').removeClass('bidBtnActive');
             $('.bidBtn').html('SUBMITTING…');
             contractTicket.deposit.sendTransaction(
                 depositNumber,
@@ -432,6 +435,7 @@
                 (err, ret) => {
                     if (err) {
                         isSubmitting = false;
+                        $('.bidBtn').addClass('bidBtnActive');
                         $('.bidBtn').html('BID');
                     }
                     if (ret) {
@@ -447,12 +451,14 @@
                                     getMyBalance();
                                     $("#imInputNumber").val('');
                                     isSubmitting = false;
+                                    $('.bidBtn').addClass('bidBtnActive');
                                     $('.bidBtn').html('TOP UP');
                                 }
                                 if (data && data.status === '0x0') {
                                     clearInterval(timerOBJ[tempRnum]);
                                     console.log('deposit USDx faild');
                                     isSubmitting = false;
+                                    $('.bidBtn').addClass('bidBtnActive');
                                     $('.bidBtn').html('BID');
                                 }
                             })
