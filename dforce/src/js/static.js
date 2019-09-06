@@ -579,6 +579,7 @@ var toHome = 'http://192.168.200.109:9990/devcon.html';
 // R test net
 var addressUSDx = '0x17996ea27d03d68ddc618f9b8f0faf43838acaf6';
 
-var addressHotel = '0xcce982dafd95d19d9b6eecfd641513cfe45d6b94';
+var addressTicket = '0x75a4a3f23cbfe3cfd4163c50a03e40f4f0fb3045';
 
-var addressTicket = '0xb0b92c9bac2121e424f1149ec80562acef263f87';
+var addressHotel = '0x1bccaee199fadaf27aa8024811d29e97d173ac18';
+

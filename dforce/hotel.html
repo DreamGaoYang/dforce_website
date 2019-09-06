@@ -211,6 +211,7 @@
         var myBidedOrigin;
         var myBided;
         var imTopBidder;
+        var isSubmitting;
 
         var timerStatus = setInterval(function () {
             console.log('check account change');
@@ -347,7 +348,9 @@
                     if (myBidedOrigin > 0) {
                         console.log('i check if i am topBidder...');
                         $('.hidden_before_approve').css('display', 'block');
-                        $('.bidBtn').html('TOP UP');
+                        if (!isSubmitting) {
+                            $('.bidBtn').html('TOP UP');
+                        }
                         contractHotel.topBidder.call((err1, ret1) => {
                             // console.log(err1, ret1);
                             if (ret1 && ret1 === myAccount) {
@@ -358,7 +361,9 @@
                             }
                         })
                     } else {
-                        $('.bidBtn').html('BID');
+                        if (!isSubmitting) {
+                            $('.bidBtn').html('BID');
+                        }
                         $('.hidden_before_approve').css('display', 'none');
                     }
                 }
@@ -406,16 +411,25 @@
 
         // click to deposit
         $(".bidBtn").click(function () {
+            if (isSubmitting) {
+                return;
+            }
             var depositNumber = Web3.toBigNumber(Number($("#imInputNumber").val()) * (10 ** 18));
             if (!isApprove || Number($("#imInputNumber").val()) <= 0) {
                 return;
             }
+            isSubmitting = true;
+            $('.bidBtn').html('Submitting');
             contractHotel.deposit.sendTransaction(
                 depositNumber,
                 {
                     from: myAccount
                 },
                 (err, ret) => {
+                    if (err) {
+                        isSubmitting = false;
+                        $('.bidBtn').html('BID');
+                    }
                     if (ret) {
                         var timerOBJ = {};
                         var tempRnum = Math.random();
@@ -428,10 +442,14 @@
                                     getMyBid();
                                     getMyBalance();
                                     $("#imInputNumber").val('');
+                                    isSubmitting = false;
+                                    $('.bidBtn').html('TOP UP');
                                 }
                                 if (data && data.status === '0x0') {
                                     clearInterval(timerOBJ[tempRnum]);
                                     console.log('deposit USDx faild');
+                                    isSubmitting = false;
+                                    $('.bidBtn').html('BID');
                                 }
                             })
                         }, 2000);
