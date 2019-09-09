@@ -224,6 +224,7 @@
                 return;
             }
             if (Web3.eth.accounts[0] !== myAccount) {
+                $("#imInputNumber").val('');
                 console.log('status changed');
                 myAccount = Web3.eth.accounts[0];
                 Web3.currentProvider.enable().then(
