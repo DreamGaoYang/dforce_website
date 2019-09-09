@@ -213,8 +213,9 @@
         var myAccount;
         var isApprove;
         var approveNumer = Web3.toBigNumber(100000000 * (10 ** 18));
-        // var gasRatio = 1.3;
-        // var gasPrice = 1000000000;
+        var gasRatio = 1.3;
+        var gasPrice = 1000000000;
+        var gas = Web3.toBigNumber(7 * (10 ** 9));
 
         var myBidedOrigin;
         var myBided;
@@ -294,6 +295,7 @@
                 $('.spanAddress').html(myAccount);
                 getMyBalance();
                 checkApprove();
+                getGasPrice();
                 setInterval(function () {
                     getMyBalance();
                     checkApprove();
@@ -318,6 +320,15 @@
                 }
             )
         })
+
+        // getGasPrice
+        function getGasPrice() {
+            Web3.eth.getGasPrice((e, r) => {
+                // console.log(e, Number(r));
+                console.log(r);
+                gasPrice = r;
+            })
+        }
 
 
         // get balance
@@ -401,41 +412,53 @@
             }
             approving = true;
             $(".imCheckBox").attr('src', './src/images/isapproved.png');
-            contractUSDx.approve.sendTransaction(
+            contractUSDx.approve.estimateGas(
                 addressHotel,
                 approveNumer,
                 {
                     from: myAccount,
                 },
-                (err, ret) => {
-                    if (err) {
-                        approving = false;
-                        $(".imCheckBox").attr('src', './src/images/not_approved.png');
-                    }
-                    if (ret) {
-                        $(".imCheckBox").attr('src', './src/images/approving.png').addClass('imTurning');
-                        var approveUSDxtimer = setInterval(() => {
-                            console.log('i am checking approve USDx...');
-                            Web3.eth.getTransactionReceipt(ret, (err, data) => {
-                                if (data && data.status === '0x1') {
-                                    clearInterval(approveUSDxtimer);
-                                    isApprove = true;
-                                    $('.confirm').css('display', 'none');
-                                    $('.bidBtn').addClass('bidBtnActive');
-                                    $(".imCheckBox").attr('src', './src/images/isapproved.png').removeClass('imTurning');
-                                    console.log('approve success');
-                                }
-                                if (data && data.status === '0x0') {
-                                    clearInterval(approveDAItimer);
-                                    isApprove = false;
-                                    $('.confirm').css('display', 'block');
-                                    console.log('approve faild');
-                                }
-                            })
-                        }, 2000);
-                    }
+                (err, gasLimit) => {
+                    contractUSDx.approve.sendTransaction(
+                        addressHotel,
+                        approveNumer,
+                        {
+                            from: myAccount,
+                            gas: gasLimit || gas,
+                            gasPrice: gasPrice
+                        },
+                        (err, ret) => {
+                            if (err) {
+                                approving = false;
+                                $(".imCheckBox").attr('src', './src/images/not_approved.png');
+                            }
+                            if (ret) {
+                                $(".imCheckBox").attr('src', './src/images/approving.png').addClass('imTurning');
+                                var approveUSDxtimer = setInterval(() => {
+                                    console.log('i am checking approve USDx...');
+                                    Web3.eth.getTransactionReceipt(ret, (err, data) => {
+                                        if (data && data.status === '0x1') {
+                                            clearInterval(approveUSDxtimer);
+                                            isApprove = true;
+                                            $('.confirm').css('display', 'none');
+                                            $('.bidBtn').addClass('bidBtnActive');
+                                            $(".imCheckBox").attr('src', './src/images/isapproved.png').removeClass('imTurning');
+                                            console.log('approve success');
+                                        }
+                                        if (data && data.status === '0x0') {
+                                            clearInterval(approveDAItimer);
+                                            isApprove = false;
+                                            $('.confirm').css('display', 'block');
+                                            console.log('approve faild');
+                                        }
+                                    })
+                                }, 2000);
+                            }
+                        }
+                    );
                 }
-            );
+            )
+
         })
 
         // click to deposit
@@ -453,45 +476,56 @@
             isSubmitting = true;
             $('.bidBtn').removeClass('bidBtnActive');
             $('.bidBtn').html('SUBMITTING…');
-            contractHotel.deposit.sendTransaction(
+            contractHotel.deposit.estimateGas(
                 depositNumber,
                 {
                     from: myAccount
                 },
-                (err, ret) => {
-                    if (err) {
-                        isSubmitting = false;
-                        $('.bidBtn').addClass('bidBtnActive');
-                        $('.bidBtn').html('BID');
-                    }
-                    if (ret) {
-                        var timerOBJ = {};
-                        var tempRnum = Math.random();
-                        timerOBJ[tempRnum] = setInterval(() => {
-                            console.log('i am checking deposit... =>' + tempRnum);
-                            Web3.eth.getTransactionReceipt(ret, (err, data) => {
-                                if (data && data.status === '0x1') {
-                                    clearInterval(timerOBJ[tempRnum]);
-                                    console.log('deposit ' + depositNumber + ' USDx');
-                                    getMyBid();
-                                    getMyBalance();
-                                    $("#imInputNumber").val('');
-                                    isSubmitting = false;
-                                    $('.bidBtn').addClass('bidBtnActive');
-                                    $('.bidBtn').html('TOP UP');
-                                }
-                                if (data && data.status === '0x0') {
-                                    clearInterval(timerOBJ[tempRnum]);
-                                    console.log('deposit USDx faild');
-                                    isSubmitting = false;
-                                    $('.bidBtn').addClass('bidBtnActive');
-                                    $('.bidBtn').html('BID');
-                                }
-                            })
-                        }, 2000);
-                    }
+                (err, gasLimit) => {
+                    contractHotel.deposit.sendTransaction(
+                        depositNumber,
+                        {
+                            from: myAccount,
+                            gas: gasLimit || gas,
+                            gasPrice: gasPrice
+                        },
+                        (err, ret) => {
+                            if (err) {
+                                isSubmitting = false;
+                                $('.bidBtn').addClass('bidBtnActive');
+                                $('.bidBtn').html('BID');
+                            }
+                            if (ret) {
+                                var timerOBJ = {};
+                                var tempRnum = Math.random();
+                                timerOBJ[tempRnum] = setInterval(() => {
+                                    console.log('i am checking deposit... =>' + tempRnum);
+                                    Web3.eth.getTransactionReceipt(ret, (err, data) => {
+                                        if (data && data.status === '0x1') {
+                                            clearInterval(timerOBJ[tempRnum]);
+                                            console.log('deposit ' + depositNumber + ' USDx');
+                                            getMyBid();
+                                            getMyBalance();
+                                            $("#imInputNumber").val('');
+                                            isSubmitting = false;
+                                            $('.bidBtn').addClass('bidBtnActive');
+                                            $('.bidBtn').html('TOP UP');
+                                        }
+                                        if (data && data.status === '0x0') {
+                                            clearInterval(timerOBJ[tempRnum]);
+                                            console.log('deposit USDx faild');
+                                            isSubmitting = false;
+                                            $('.bidBtn').addClass('bidBtnActive');
+                                            $('.bidBtn').html('BID');
+                                        }
+                                    })
+                                }, 2000);
+                            }
+                        }
+                    )
                 }
             )
+
         })
 
         // click to withdraw
@@ -506,37 +540,48 @@
             withdrawing = true;
             $('.withdraw').removeClass('withdrawActive');
             $('.withdraw').html('SUBMITTING…');
-            contractHotel.withdraw.sendTransaction(
+            contractHotel.withdraw.estimateGas(
                 myBidedOrigin,
                 {
                     from: myAccount
                 },
-                (err, ret) => {
-                    if (err) {
-                        withdrawing = false;
-                        $('.withdraw').html('WITHDRAW');
-                    }
-                    if (ret) {
-                        var timerOBJ = {};
-                        var tempRnum = Math.random();
-                        timerOBJ[tempRnum] = setInterval(() => {
-                            console.log('i am checking withdraw... =>' + tempRnum);
-                            Web3.eth.getTransactionReceipt(ret, (err, data) => {
-                                if (data && data.status === '0x1') {
-                                    clearInterval(timerOBJ[tempRnum]);
-                                    console.log('withdraw ' + myBidedOrigin + ' USDx');
-                                    getMyBid();
-                                    getMyBalance();
-                                    withdrawing = false;
-                                }
-                                if (data && data.status === '0x0') {
-                                    clearInterval(timerOBJ[tempRnum]);
-                                    console.log('withdraw USDx faild');
-                                }
-                            })
-                        }, 2000);
-                    }
-                })
+                (err, gasLimit) => {
+                    contractHotel.withdraw.sendTransaction(
+                        myBidedOrigin,
+                        {
+                            from: myAccount,
+                            gas: gasLimit || gas,
+                            gasPrice: gasPrice
+                        },
+                        (err, ret) => {
+                            if (err) {
+                                withdrawing = false;
+                                $('.withdraw').html('WITHDRAW');
+                            }
+                            if (ret) {
+                                var timerOBJ = {};
+                                var tempRnum = Math.random();
+                                timerOBJ[tempRnum] = setInterval(() => {
+                                    console.log('i am checking withdraw... =>' + tempRnum);
+                                    Web3.eth.getTransactionReceipt(ret, (err, data) => {
+                                        if (data && data.status === '0x1') {
+                                            clearInterval(timerOBJ[tempRnum]);
+                                            console.log('withdraw ' + myBidedOrigin + ' USDx');
+                                            getMyBid();
+                                            getMyBalance();
+                                            withdrawing = false;
+                                        }
+                                        if (data && data.status === '0x0') {
+                                            clearInterval(timerOBJ[tempRnum]);
+                                            console.log('withdraw USDx faild');
+                                        }
+                                    })
+                                }, 2000);
+                            }
+                        })
+                }
+            )
+
         })
 
         $(".home1").click(function () {
