@@ -110,7 +110,7 @@
             </li>
             <li>
                 <span></span>
-                You may withdraw your USDx assets at any time (except the one with top price).
+                You may withdraw your USDx assets at any time (except the top bidder).
             </li>
             <li>
                 <span></span>
@@ -118,10 +118,8 @@
             </li>
             <li>
                 <span></span>
-                The winner will be required to send 1 USDx to [TBC: address] with a memo including your email address
-                within 72 hours after the disclosure of the auction result. You should expect an email from <a
-                    href="javascript:;">contacts@dforce.network</a>
-                with instructions on how to receive your ticket.
+                Winner should expect a private notice on how to collect your prize when you revisit the auction website
+                12 hours after the result annoucement.
             </li>
         </ul>
         <div class="confirm">
@@ -213,6 +211,7 @@
         var imTopBidder;
         var isSubmitting;
         var approving;
+        var withdrawing;
 
         var timerStatus = setInterval(function () {
             console.log('check account change');
@@ -484,13 +483,22 @@
             if (!isApprove || myBidedOrigin <= 0 || imTopBidder) {
                 return;
             }
-            console.log('withdrawing......');
+            if (withdrawing) {
+                return;
+            }
+            withdrawing = true;
+            $('.withdraw').removeClass('withdrawActive');
+            $('.withdraw').html('SUBMITTING…');
             contractTicket.withdraw.sendTransaction(
                 myBidedOrigin,
                 {
                     from: myAccount
                 },
                 (err, ret) => {
+                    if (err) {
+                        withdrawing = false;
+                        $('.withdraw').html('WITHDRAW');
+                    }
                     if (ret) {
                         var timerOBJ = {};
                         var tempRnum = Math.random();
@@ -502,6 +510,7 @@
                                     console.log('withdraw ' + myBidedOrigin + ' USDx');
                                     getMyBid();
                                     getMyBalance();
+                                    withdrawing = false;
                                 }
                                 if (data && data.status === '0x0') {
                                     clearInterval(timerOBJ[tempRnum]);

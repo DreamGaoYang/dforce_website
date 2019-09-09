@@ -572,12 +572,12 @@ function formatNumber(BNr) {
     }
 }
 
-// var toTicket = 'http://192.168.200.109:9990/ticket.html';
-// var toHotel = 'http://192.168.200.109:9990/hotel.html';
-// var toHome = 'http://192.168.200.109:9990/devcon.html';
-var toTicket = 'https://dforce.network/ticket.html';
-var toHotel = 'https://dforce.network/hotel.html';
-var toHome = 'https://dforce.network/devcon.html';
+var toTicket = 'http://192.168.200.109:9990/ticket.html';
+var toHotel = 'http://192.168.200.109:9990/hotel.html';
+var toHome = 'http://192.168.200.109:9990/devcon.html';
+// var toTicket = 'https://dforce.network/ticket.html';
+// var toHotel = 'https://dforce.network/hotel.html';
+// var toHome = 'https://dforce.network/devcon.html';
 
 // R test net
 var addressUSDx = '0x17996ea27d03d68ddc618f9b8f0faf43838acaf6';
