@@ -212,6 +212,8 @@
         var isSubmitting;
         var approving;
         var withdrawing;
+        var mybalanceUSDx;
+        var toUSDx;
 
         var timerStatus = setInterval(function () {
             console.log('check account change');
@@ -316,6 +318,7 @@
             });
             contractUSDx.balanceOf.call(myAccount, (err, ret) => {
                 $('.balanceUSDx').html(formatNumber(ret));
+                mybalanceUSDx = ret;
             });
         };
 
@@ -429,6 +432,9 @@
             if (isSubmitting) {
                 return;
             }
+            if (toUSDx) {
+                return;
+            }
             var depositNumber = Web3.toBigNumber(Number($("#imInputNumber").val()) * (10 ** 18));
             if (!isApprove || Number($("#imInputNumber").val()) <= 0) {
                 return;
@@ -531,6 +537,23 @@
         $(".hotel2").click(function () {
             window.location.href = toHotel;
         });
+
+
+        $("#imInputNumber").bind("input propertychange", function (event) {
+            if (!myAccount) {
+                return;
+            }
+            // console.log($("#imInputNumber").val());
+            // console.log(mybalanceUSDx);
+            if (Web3.toBigNumber(Number($("#imInputNumber").val()) * (10 ** 18)).sub(mybalanceUSDx) > 0) {
+                $('.bidBtn').removeClass('bidBtnActive');
+                toUSDx = true;
+            } else {
+                $('.bidBtn').addClass('bidBtnActive');
+                toUSDx = false;
+            }
+        });
+
     });
 </script>
 
