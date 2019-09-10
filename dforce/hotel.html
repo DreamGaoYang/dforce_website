@@ -262,7 +262,8 @@
                 var endTime = new Date(ret * 1000);
                 var t = endTime.getTime() - nowTime.getTime();
                 var hour = Math.floor(t / 1000 / 60 / 60 % 24);
-                var d = Math.floor(hour / 24);
+                // var d = Math.floor(hour / 24);
+                var d = Math.floor(t / 1000 / 60 / 60 / 24);
                 var min = Math.floor(t / 1000 / 60 % 60);
                 var sec = Math.floor(t / 1000 % 60);
                 if (hour < 10) {
