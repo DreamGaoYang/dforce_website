@@ -594,6 +594,10 @@
             if (!myAccount) {
                 return;
             }
+            if (!isApprove) {
+                $('.bidBtn').removeClass('bidBtnActive');
+                return;
+            }
             // console.log($("#imInputNumber").val());
             // console.log(mybalanceUSDx);
             if (Web3.toBigNumber(Number($("#imInputNumber").val()) * (10 ** 18)).sub(mybalanceUSDx) > 0) {
