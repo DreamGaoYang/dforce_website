@@ -232,7 +232,7 @@
             }
             if (Web3.eth.accounts[0] !== myAccount) {
                 $("#imInputNumber").val('');
-                $(".imCheckBox").attr('src', './src/images/not_approved.png');
+                // $(".imCheckBox").attr('src', './src/images/not_approved.png');
                 console.log('status changed');
                 myAccount = Web3.eth.accounts[0];
                 Web3.currentProvider.enable().then(
@@ -387,7 +387,9 @@
                                 $('.withdrawTips').html("Please note you couldn't withdraw your USDx collateral if you were the top bidder.");
                             } else {
                                 imTopBidder = false;
-                                $('.withdraw').addClass('withdrawActive');
+                                if (!withdrawing) {
+                                    $('.withdraw').addClass('withdrawActive');
+                                }
                                 $('.withdrawTips').html("All your USDx assets supplied will be returned to the same address <span class='spanAddress'> " + myAccount + " </span>");
                             }
                         })
