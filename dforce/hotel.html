@@ -59,6 +59,7 @@
                 <div class="rightAddress"></div>
 
                 <div class="exchange">
+                    <div class="alert_button">Prize claim ends in…</div>
                     <div class="home1">Home</div>
                     <div class="ticket1">Ticket</div>
                     <div class="hotel2">Hotel</div>
@@ -79,17 +80,17 @@
         <div class="timeline"></div>
         <div class="time1">
             <div class="timetext">HOURS</div>
-            <div class="timenumber time_hours">00</div>
+            <div class="timenumber time_hours">0</div>
         </div>
         <div class="timeline"></div>
         <div class="time1">
             <div class="timetext">MINUTES</div>
-            <div class="timenumber time_min">00</div>
+            <div class="timenumber time_min">0</div>
         </div>
         <div class="timeline"></div>
         <div class="time1">
             <div class="timetext">SECONDS</div>
-            <div class="timenumber time_sec">00</div>
+            <div class="timenumber time_sec">0</div>
         </div>
         <div class="clear"></div>
     </div>
@@ -172,6 +173,14 @@
 
     <div class="footer">
         Please, feel free to reach out with any questions: <span>contacts@dforce.network</span>
+    </div>
+
+    <div class="popup alert_Popup">
+        <div class="popBox alert_Popup">
+            <button class="iamButton"></button>
+            <p class="pp1">The hotel acution is closed. The winner is</p>
+            <p class="pp2">0xCF380F26252c2D6D6b60E6A5cB5a68aA4953BaCd</p>
+        </div>
     </div>
 
 </body>
@@ -260,35 +269,44 @@
         }, 3000);
 
         // 倒计时
-        contractHotel.expireTime.call((err, ret) => {
-            setInterval(function () {
-                var nowTime = new Date();
-                var endTime = new Date(ret * 1000);
-                var t = endTime.getTime() - nowTime.getTime();
-                var hour = Math.floor(t / 1000 / 60 / 60 % 24);
-                // var d = Math.floor(hour / 24);
-                var d = Math.floor(t / 1000 / 60 / 60 / 24);
-                var min = Math.floor(t / 1000 / 60 % 60);
-                var sec = Math.floor(t / 1000 % 60);
-                if (hour < 10) {
-                    hour = "0" + hour;
-                }
-                if (hour == 24) {
-                    hour = "00";
-                }
-                if (min < 10) {
-                    min = "0" + min;
-                }
-                if (sec < 10) {
-                    sec = "0" + sec;
-                }
-                var countDownTime = d + ":" + hour + ":" + min + ":" + sec;
-                $('.time_days').html(d);
-                $('.time_hours').html(hour);
-                $('.time_min').html(min);
-                $('.time_sec').html(sec);
+        // contractHotel.expireTime.call((err, ret) => {
+        //     setInterval(function () {
+        //         var nowTime = new Date();
+        //         var endTime = new Date(ret * 1000);
+        //         var t = endTime.getTime() - nowTime.getTime();
+        //         var hour = Math.floor(t / 1000 / 60 / 60 % 24);
+        //         // var d = Math.floor(hour / 24);
+        //         var d = Math.floor(t / 1000 / 60 / 60 / 24);
+        //         var min = Math.floor(t / 1000 / 60 % 60);
+        //         var sec = Math.floor(t / 1000 % 60);
+        //         if (hour < 10) {
+        //             hour = "0" + hour;
+        //         }
+        //         if (hour == 24) {
+        //             hour = "00";
+        //         }
+        //         if (min < 10) {
+        //             min = "0" + min;
+        //         }
+        //         if (sec < 10) {
+        //             sec = "0" + sec;
+        //         }
+        //         var countDownTime = d + ":" + hour + ":" + min + ":" + sec;
+        //         $('.time_days').html(d);
+        //         $('.time_hours').html(hour);
+        //         $('.time_min').html(min);
+        //         $('.time_sec').html(sec);
 
-            }, 1000);
+        //     }, 1000);
+        // })
+
+
+        $(".iamButton").click(function () {
+            $('.alert_Popup').css('display', 'none');
+        })
+
+        $(".alert_button").click(function () {
+            $('.alert_Popup').css('display', 'block');
         })
 
         Web3.currentProvider.enable().then(
